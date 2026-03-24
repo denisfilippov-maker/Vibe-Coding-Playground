@@ -1,10 +1,11 @@
 # CURRENT_STATUS.md — Прогресс и задачи
 
-## Статус: 🟢 Базовая разработка завершена
+## Статус: 🚀 Задеплоен на сервер — готов к дальнейшей разработке
 
 **Дата последнего обновления:** 24 марта 2026  
 **GitHub:** https://github.com/denisfilippov-maker/Vibe-Coding-Playground  
-**Dev-сервер:** `npm run dev` → http://localhost:3000
+**Dev-сервер:** `npm run dev` → http://localhost:3000  
+**Production:** http://filidan.ru (VDS 45.146.167.101)
 
 ---
 
@@ -75,19 +76,41 @@
 - [x] CTA блок с кнопками
 - [x] Строка "Создано с Claude + Cursor за 1 день"
 
-### ✅ Этап 8: Git + Деплой (частично)
+### ✅ Этап 8: Git + Деплой на VDS
 - [x] Первый коммит — 40 файлов, 9358 строк
 - [x] Подключён GitHub: https://github.com/denisfilippov-maker/Vibe-Coding-Playground
-- [ ] Подключить к Vercel
+- [x] VDS сервер: Ubuntu 24.04 LTS (45.146.167.101)
+- [x] Установлено: Node.js 20 LTS, nginx, pm2
+- [x] Репозиторий склонирован в `/var/www/vibe-coding-playground`
+- [x] Проект собран (`next build`) — HTTP 200 ✓
+- [x] Приложение запущено через pm2 (порт 3000, статус: online)
+- [x] nginx настроен как reverse proxy для filidan.ru
+- [x] pm2 и nginx добавлены в автозапуск
 
 ---
 
 ## Текущие задачи (следующие шаги)
 
-1. **Деплой на Vercel** — подключить репозиторий и задеплоить
-2. **Полировка мобильной версии** — проверить Hero parallax на touch-устройствах
-3. **OG Image** — добавить `public/og-image.png` для соцсетей
-4. **Оптимизация** — `LazyMotion` для уменьшения bundle size
+1. **SSL/HTTPS** — настроить Let's Encrypt через certbot для filidan.ru
+2. **CI/CD** — GitHub Actions для автодеплоя при push в main
+3. **Полировка мобильной версии** — проверить Hero parallax на touch-устройствах
+4. **OG Image** — добавить `public/og-image.png` для соцсетей
+5. **Оптимизация** — `LazyMotion` для уменьшения bundle size
+
+## Инфраструктура сервера
+
+| Компонент | Значение |
+|-----------|---------|
+| VDS IP | 45.146.167.101 |
+| ОС | Ubuntu 24.04 LTS |
+| Node.js | v20.20.1 |
+| npm | 10.8.2 |
+| pm2 | 6.0.14 |
+| nginx | system (Ubuntu repo) |
+| Путь проекта | `/var/www/vibe-coding-playground` |
+| Порт приложения | 3000 |
+| pm2 app name | `vibe-coding` |
+| Домен | filidan.ru (Cloudflare) |
 
 ---
 
