@@ -91,8 +91,7 @@
 
 ## Текущие задачи (следующие шаги)
 
-1. **SSL/HTTPS** — настроить Let's Encrypt через certbot для filidan.ru
-2. **CI/CD** — GitHub Actions для автодеплоя при push в main
+1. **CI/CD** — GitHub Actions для автодеплоя при push в main
 3. **Полировка мобильной версии** — проверить Hero parallax на touch-устройствах
 4. **OG Image** — добавить `public/og-image.png` для соцсетей
 5. **Оптимизация** — `LazyMotion` для уменьшения bundle size
@@ -111,6 +110,8 @@
 | Порт приложения | 3000 |
 | pm2 app name | `vibe-coding` |
 | Домен | filidan.ru (Cloudflare) |
+| SSL | Cloudflare (терминируется на CF, до сервера HTTP) |
+| nginx real IP | CF-Connecting-IP + все IP-диапазоны Cloudflare |
 
 ---
 
