@@ -1,142 +1,113 @@
 # CURRENT_STATUS.md — Прогресс и задачи
 
-## Статус: 🟡 Планирование / Начало разработки
+## Статус: 🟢 Базовая разработка завершена
+
+**Дата последнего обновления:** 24 марта 2026  
+**GitHub:** https://github.com/denisfilippov-maker/Vibe-Coding-Playground  
+**Dev-сервер:** `npm run dev` → http://localhost:3000
 
 ---
 
-## План реализации по этапам
+## Что уже сделано
 
-### Этап 0: Инициализация (30 мин)
+### ✅ Этап 0: Инициализация
+- [x] Next.js 14.2 (App Router) + TypeScript + Tailwind CSS v3
+- [x] Установлены все зависимости: `framer-motion`, `canvas-confetti`, `clsx`, `tailwind-merge`, `@radix-ui/react-slider`, `@radix-ui/react-switch`
+- [x] Шрифты в `layout.tsx` — Syne, DM_Sans, JetBrains_Mono через `next/font/google`
+- [x] `tailwind.config.ts` — кастомные цвета, анимации, box-shadow neon
+- [x] CSS переменные в `globals.css` — тёмная и светлая тема полностью
+- [x] `src/lib/utils.ts` — функция `cn()` (clsx + tailwind-merge)
+- [x] `src/lib/animations.ts` — переиспользуемые варианты Framer Motion
+- [x] `next.config.mjs`, `tsconfig.json`, `postcss.config.js`, `.gitignore`, `.eslintrc.json`
 
-- [ ] `npx create-next-app@latest vibe-coding-playground --typescript --tailwind --app`
-- [ ] Установить зависимости: `framer-motion canvas-confetti clsx tailwind-merge @radix-ui/react-slider @radix-ui/react-switch`
-- [ ] Установить шрифты в `layout.tsx` (Syne, DM_Sans, JetBrains_Mono)
-- [ ] Настроить `tailwind.config.ts` — добавить кастомные цвета и анимации
-- [ ] Настроить CSS переменные в `globals.css` (обе темы)
-- [ ] Создать `src/lib/utils.ts` с функцией `cn()`
-- [ ] Создать `src/lib/animations.ts` с базовыми вариантами
+### ✅ Этап 1: Основа
+- [x] `ThemeProvider.tsx` — React Context, localStorage, `data-theme` на `<html>`
+- [x] `useTheme.ts` — хук для доступа к теме
+- [x] `useScrollProgress.ts` — прогресс скролла 0→1
+- [x] `useStaggerAnimation.ts` — хук InView + AnimationControls
+- [x] `SectionWrapper.tsx` — обёртка секций
+- [x] `SectionLabel.tsx` — бейдж "01 / HERO"
+- [x] `GradientText.tsx` — градиентный текст с опциональной анимацией
+- [x] `NeonButton.tsx` — кнопка с неон-эффектом (outline/filled, 4 цвета)
+- [x] `GlassCard.tsx` — glassmorphism карточка с hover glow
+- [x] `AnimatedCounter.tsx` — счётчик с spring-анимацией
+- [x] `Navbar.tsx` — навигация (появляется при скролле), прогресс-бар
 
-**Результат:** Пустой проект с правильной конфигурацией
+### ✅ Этап 2: Hero секция
+- [x] Animated gradient background — 3 плавающих blob
+- [x] Stagger анимация для букв заголовка (char by char)
+- [x] Floating particles (24 точки, случайные траектории)
+- [x] Parallax при движении мыши (`useMotionValue` + `useTransform` + spring)
+- [x] Scroll indicator с анимацией
 
----
+### ✅ Этап 3: Секция Animations
+- [x] Grid из 6 карточек, каждая — своя уникальная анимация:
+  - Fade In (только opacity)
+  - Slide Up (y: 80px)
+  - Scale (scale 0.2→1 с backOut)
+  - Rotate Y (90°→0, видно без perspective)
+  - Spring (x: -60px + stiffness 300, damping 10)
+  - SVG Path (pathLength 0→1)
+- [x] Кнопка "Replay" — `controls.start('hidden')` → 120ms → `controls.start('visible')`
+- [x] AnimatedCounter (spring, InView)
 
-### Этап 1: Основа (1-2 часа)
+### ✅ Этап 4: Секция Interactivity
+- [x] `ConfettiButton` — canvas-confetti с origin от позиции клика
+- [x] `MorphButton` — idle → loading (spinner) → success (checkmark)
+- [x] `AnimatedSlider` — Radix UI Slider, цвет трека меняется через hue
+- [x] `ThemeToggle` — анимированный day/night переключатель
+- [x] `RippleButton` — кастомный ripple (AnimatePresence + scale)
+- [x] Счётчик кликов
 
-- [ ] `ThemeProvider.tsx` — контекст темы
-- [ ] `useTheme.ts` — хук с localStorage
-- [ ] `SectionWrapper.tsx` — обёртка секций
-- [ ] `SectionLabel.tsx` — компонент метки
-- [ ] `GradientText.tsx` — анимированный градиентный текст
-- [ ] `Navbar.tsx` — навигация (появляется при скролле)
+### ✅ Этап 5: Секция Visual Effects
+- [x] Glassmorphism showcase — 4 карточки на gradient background
+- [x] Neon glow текст — hover усиливает textShadow
+- [x] Aurora effect — анимированный градиент через Framer Motion
+- [x] Gradient mesh + SVG noise (feTurbulence + hue-rotate)
 
-**Результат:** Скелет проекта готов
+### ✅ Этап 6: Секция Responsive
+- [x] Device switcher (Desktop / Tablet / Mobile)
+- [x] Анимированный resize превью (spring transition)
+- [x] Breakpoint legend (default, sm, md, lg, xl)
 
----
+### ✅ Этап 7: Footer
+- [x] Watermark текст "VIBE" на фоне
+- [x] CTA блок с кнопками
+- [x] Строка "Создано с Claude + Cursor за 1 день"
 
-### Этап 2: Hero секция (1 час)
-
-- [ ] Animated gradient background (CSS keyframes)
-- [ ] Stagger анимация для букв заголовка
-- [ ] Floating particles (20-30 точек с случайными траекториями)
-- [ ] Parallax при движении мыши (useMotionValue + useTransform)
-- [ ] Scroll indicator с пульсацией
-
-**Результат:** Первый экран который "вау"
-
----
-
-### Этап 3: Секция Animations (1 час)
-
-- [ ] Grid из 6 карточек
-- [ ] Каждая карточка — отдельный компонент с демо
-- [ ] `useInView` для триггера при входе в viewport
-- [ ] Кнопка "Replay All" (сброс и перезапуск анимаций)
-- [ ] AnimatedCounter 0→100
-
-**Результат:** Наглядная демонстрация возможностей Framer Motion
-
----
-
-### Этап 4: Секция Interactivity (1 час)
-
-- [ ] `ConfettiButton` с canvas-confetti
-- [ ] `MorphButton` (idle → loading → success трансформация)
-- [ ] `AnimatedSlider` с цветовым треком
-- [ ] `ThemeToggle` (большой, красивый)
-- [ ] `RippleButton` (кастомный ripple эффект)
-
-**Результат:** Секция которую хочется "потыкать"
-
----
-
-### Этап 5: Секция Visual Effects (1 час)
-
-- [ ] GlassCard компонент
-- [ ] Showcase 4-6 glassmorphism карточек на gradient bg
-- [ ] Neon glow текст и элементы
-- [ ] Aurora / gradient mesh анимация
-- [ ] Noise texture (SVG filter)
-- [ ] Hover color shifting cards
-
-**Результат:** Визуально самая "богатая" секция
-
----
-
-### Этап 6: Секция Responsive (45 мин)
-
-- [ ] Device switcher (Desktop/Tablet/Mobile кнопки)
-- [ ] Анимированный resize превью
-- [ ] Breakpoint indicator
-- [ ] Контент внутри превью адаптируется
-
-**Результат:** Интерактивная демонстрация адаптивности
-
----
-
-### Этап 7: Footer + Полировка (45 мин)
-
-- [ ] Footer с CTA
-- [ ] Проверить все анимации на mobile
-- [ ] Оптимизировать производительность (lazy loading секций)
-- [ ] Проверить темы (dark/light)
-- [ ] Добавить meta теги и OG image
-
-**Результат:** Готовый к деплою проект
-
----
-
-### Этап 8: Деплой (15 мин)
-
-- [ ] `git init && git add . && git commit -m "initial"`
-- [ ] Создать репо на GitHub
+### ✅ Этап 8: Git + Деплой (частично)
+- [x] Первый коммит — 40 файлов, 9358 строк
+- [x] Подключён GitHub: https://github.com/denisfilippov-maker/Vibe-Coding-Playground
 - [ ] Подключить к Vercel
-- [ ] `vercel --prod`
 
 ---
 
 ## Текущие задачи (следующие шаги)
 
-1. **СЕЙЧАС:** Запустить Этап 0 — инициализация проекта
-2. **ПОТОМ:** Этап 1 — базовые компоненты и провайдеры
+1. **Деплой на Vercel** — подключить репозиторий и задеплоить
+2. **Полировка мобильной версии** — проверить Hero parallax на touch-устройствах
+3. **OG Image** — добавить `public/og-image.png` для соцсетей
+4. **Оптимизация** — `LazyMotion` для уменьшения bundle size
 
 ---
 
-## Известные сложности
+## Известные проблемы / Tech Debt
 
-| Проблема | Решение |
-|---------|---------|
-| Framer Motion увеличивает bundle | Использовать `LazyMotion` с `domAnimation` features |
-| Конфетти не работает на SSR | Обернуть в `dynamic(() => ..., { ssr: false })` |
-| Parallax лагает на mobile | Отключить parallax на `(hover: none)` media query |
-| FOUC при смене темы | Inline script в `<head>` для чтения localStorage до рендера |
+| Проблема | Статус | Решение |
+|---------|--------|---------|
+| Parallax на mobile | 🟡 Не проверено | Отключить на `(hover: none)` media query |
+| Conffetti SSR | ✅ Работает | `'use client'` + динамический import не нужен |
+| FOUC при смене темы | ✅ Минимизирован | `suppressHydrationWarning` + `data-theme` на html |
+| `next.config.ts` → `.mjs` | ✅ Исправлено | Next.js 14 не поддерживает `.ts` конфиг |
 
 ---
 
-## Заметки для Cursor
+## Соглашения проекта (для Cursor)
 
-При работе с этим проектом:
-- Все анимации — через Framer Motion, не CSS transitions (исключение: простые hover)
-- Цвета — только через CSS переменные (`var(--accent-cyan)`), не хардкодить
-- Компоненты — строго TypeScript, все пропсы типизированы
+- Все анимации — через Framer Motion (`motion.*`), не CSS transitions (исключение: простые hover)
+- Цвета — только через CSS переменные (`var(--accent-cyan)`), не хардкодить Tailwind-цвета напрямую
+- Компоненты — строго TypeScript, все пропсы типизированы через `interface`
 - Импорты — абсолютные (`@/components/...`), не относительные
 - `cn()` — всегда для объединения классов Tailwind
+- `'use client'` — на всех компонентах с хуками, анимациями, обработчиками событий
+- Секции независимы — новый блок = новый файл в `sections/`, добавить в `page.tsx`
