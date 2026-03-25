@@ -1,8 +1,8 @@
 # CURRENT_STATUS.md — Прогресс и задачи
 
-## Статус: 🏁 v1.0 — Production Ready
+## Статус: 🏁 v1.1 — Production Ready
 
-**Дата последнего обновления:** 25 марта 2026  
+**Дата последнего обновления:** 25 марта 2026 (v1.1)  
 **GitHub:** https://github.com/denisfilippov-maker/Vibe-Coding-Playground  
 **Dev-сервер:** `npm run dev` → http://localhost:3000  
 **Production:** https://filidan.ru (VDS 45.146.167.101)
@@ -98,6 +98,17 @@ git pull && npm run build && pm2 restart vibe-coding
 - [x] SSL — Cloudflare Origin Certificate (RSA 2048, валиден до 2041)
 - [x] SSL режим: Full (Cloudflare → origin по HTTPS)
 - [x] pm2 + nginx — автозапуск при перезагрузке сервера
+
+---
+
+## Что добавлено в v1.1
+
+### ✅ ContactSection (06)
+- [x] Секция сбора заявок с анимированной формой (floating labels, focus glow)
+- [x] Loading / success / error состояния кнопки Submit
+- [x] API route `POST /api/contact` — валидация + Telegram Bot уведомления
+- [x] Кнопки "Изучить" и "Пройти курс" — плавный скролл к форме заявки
+- [x] Navbar: ссылка "Заявка" с подсветкой активной секции
 
 ---
 
