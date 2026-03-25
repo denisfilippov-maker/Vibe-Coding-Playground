@@ -49,7 +49,15 @@ export function FooterSection() {
 
         {/* Buttons */}
         <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center">
-          <NeonButton color="cyan" variant="filled" className="text-base px-8 py-4">
+          <NeonButton
+            color="cyan"
+            variant="filled"
+            className="text-base px-8 py-4"
+            onClick={() => {
+              const el = document.getElementById('contact')
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }}
+          >
             Пройти курс
           </NeonButton>
           <a

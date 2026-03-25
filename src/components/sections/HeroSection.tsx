@@ -188,7 +188,14 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 1.6 }}
           className="flex gap-4 flex-wrap justify-center"
         >
-          <NeonButton color="cyan" variant="filled">
+          <NeonButton
+            color="cyan"
+            variant="filled"
+            onClick={() => {
+              const el = document.getElementById('contact')
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }}
+          >
             Изучить
           </NeonButton>
           <NeonButton color="violet" variant="outline">
