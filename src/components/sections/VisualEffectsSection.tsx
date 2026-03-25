@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionLabel } from '@/components/ui/SectionLabel'
@@ -7,6 +8,43 @@ import { GlassCard } from '@/components/ui/GlassCard'
 import { GradientText } from '@/components/ui/GradientText'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import type { AccentColor } from '@/types'
+
+const COLOR_SHIFT_CARDS: {
+  title: string
+  desc: string
+  accent: AccentColor
+  bg: string
+  glow: string
+}[] = [
+  {
+    title: 'Cyan Card',
+    desc: 'Наведи для эффекта',
+    accent: 'cyan',
+    bg: 'rgba(0,245,255,0.08)',
+    glow: '0 0 30px rgba(0,245,255,0.4)',
+  },
+  {
+    title: 'Violet Card',
+    desc: 'Наведи для эффекта',
+    accent: 'violet',
+    bg: 'rgba(157,78,221,0.08)',
+    glow: '0 0 30px rgba(157,78,221,0.4)',
+  },
+  {
+    title: 'Green Card',
+    desc: 'Наведи для эффекта',
+    accent: 'green',
+    bg: 'rgba(57,255,20,0.08)',
+    glow: '0 0 30px rgba(57,255,20,0.4)',
+  },
+  {
+    title: 'Pink Card',
+    desc: 'Наведи для эффекта',
+    accent: 'pink',
+    bg: 'rgba(255,0,110,0.08)',
+    glow: '0 0 30px rgba(255,0,110,0.4)',
+  },
+]
 
 const glassCards: { color: AccentColor; label: string; emoji: string }[] = [
   { color: 'cyan', label: 'Cyan Glass', emoji: '💠' },
@@ -133,7 +171,6 @@ export function VisualEffectsSection() {
                 background: 'radial-gradient(ellipse at 25% 50%, #9d4edd 0%, transparent 50%), radial-gradient(ellipse at 75% 50%, #00f5ff 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, #ff006e 0%, transparent 50%)',
               }}
             />
-            {/* SVG noise overlay */}
             <svg className="absolute inset-0 w-full h-full opacity-20 mix-blend-overlay pointer-events-none" xmlns="http://www.w3.org/2000/svg">
               <filter id="noise">
                 <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
@@ -146,7 +183,54 @@ export function VisualEffectsSection() {
             </p>
           </div>
         </motion.div>
+
+        {/* Hover color shift */}
+        <motion.div variants={fadeInUp}>
+          <h3 className="text-sm font-mono text-[var(--text-muted)] mb-4 uppercase tracking-wider">
+            Hover Color Shift
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {COLOR_SHIFT_CARDS.map((card) => (
+              <HoverColorCard key={card.accent} card={card} />
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </SectionWrapper>
+  )
+}
+
+function HoverColorCard({ card }: { card: typeof COLOR_SHIFT_CARDS[number] }) {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <motion.div
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      animate={{
+        backgroundColor: hovered ? card.bg : 'rgba(255,255,255,0.03)',
+        boxShadow: hovered ? card.glow : '0 0 0px transparent',
+        y: hovered ? -6 : 0,
+        borderColor: hovered
+          ? `var(--accent-${card.accent})`
+          : 'rgba(255,255,255,0.08)',
+      }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="rounded-2xl p-5 border cursor-default select-none"
+    >
+      <motion.div
+        animate={{ color: hovered ? `var(--accent-${card.accent})` : 'var(--text-muted)' }}
+        transition={{ duration: 0.25 }}
+        className="text-2xl mb-3 font-bold font-mono"
+      >
+        {card.accent.toUpperCase().slice(0, 2)}
+      </motion.div>
+      <p className="text-sm font-display font-semibold text-[var(--text-primary)]">
+        {card.title}
+      </p>
+      <p className="text-xs font-mono text-[var(--text-muted)] mt-1">
+        {hovered ? '← активен' : card.desc}
+      </p>
+    </motion.div>
   )
 }

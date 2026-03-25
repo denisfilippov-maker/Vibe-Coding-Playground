@@ -204,11 +204,10 @@ export function AnimationsSection() {
         <div className="flex items-center gap-6">
           <div className="text-center">
             <AnimatedCounter
-              to={60}
-              suffix=" fps"
+              to={100}
               className="font-display font-black text-4xl text-[var(--accent-cyan)]"
             />
-            <p className="text-xs font-mono text-[var(--text-muted)] mt-1">target</p>
+            <p className="text-xs font-mono text-[var(--text-muted)] mt-1">анимаций</p>
           </div>
           <NeonButton color="cyan" variant="outline" onClick={handleReplay}>
             ↺ Replay

@@ -82,10 +82,26 @@ export function InteractivitySection() {
           </GlassCard>
         </motion.div>
 
-        {/* Ripple button */}
+        {/* Ripple button + animated click counter */}
         <motion.div variants={fadeInUp} className="md:col-span-2">
           <GlassCard className="flex flex-col items-center gap-6 py-8">
-            <p className="text-sm font-mono text-[var(--text-secondary)]">Ripple Effect · кликов: {clickCount}</p>
+            <div className="flex items-center gap-3 text-sm font-mono text-[var(--text-secondary)]">
+              <span>Ripple Effect · кликов:</span>
+              {/* Анимированные цифры — digit flip при каждом клике */}
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={clickCount}
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 20, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  className="inline-block font-bold text-[var(--accent-pink)] tabular-nums min-w-[2ch] text-center"
+                >
+                  {clickCount}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+
             <button
               onClick={handleRipple}
               className="relative overflow-hidden px-10 py-4 rounded-2xl border border-[var(--accent-pink)] text-[var(--accent-pink)] font-display font-bold text-base"

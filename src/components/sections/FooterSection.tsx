@@ -9,13 +9,13 @@ import { staggerContainer, fadeInUp } from '@/lib/animations'
 export function FooterSection() {
   return (
     <SectionWrapper id="footer" className="relative overflow-hidden">
-      {/* Background watermark text */}
+      {/* Background watermark — full project name as per architecture */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <span
-          className="font-display font-black text-[20vw] leading-none select-none whitespace-nowrap opacity-[0.03]"
+          className="font-display font-black text-[9vw] leading-none select-none whitespace-nowrap opacity-[0.04]"
           style={{ color: 'var(--text-primary)' }}
         >
-          VIBE
+          Vibe Coding Playground
         </span>
       </div>
 
@@ -52,9 +52,15 @@ export function FooterSection() {
           <NeonButton color="cyan" variant="filled" className="text-base px-8 py-4">
             Пройти курс
           </NeonButton>
-          <NeonButton color="violet" variant="outline">
-            GitHub →
-          </NeonButton>
+          <a
+            href="https://github.com/denisfilippov-maker/Vibe-Coding-Playground"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <NeonButton color="violet" variant="outline">
+              GitHub →
+            </NeonButton>
+          </a>
         </motion.div>
 
         {/* Divider */}
@@ -72,7 +78,7 @@ export function FooterSection() {
           <span className="text-[var(--accent-cyan)] opacity-60">
             Vibe Coding Playground
           </span>
-          <span>© 2025 · MIT License</span>
+          <span>© 2026 · MIT License</span>
         </motion.div>
       </motion.div>
     </SectionWrapper>
