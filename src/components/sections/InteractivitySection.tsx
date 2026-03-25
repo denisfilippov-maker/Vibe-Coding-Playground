@@ -94,7 +94,7 @@ export function InteractivitySection() {
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 20, opacity: 0 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
                   className="inline-block font-bold text-[var(--accent-pink)] tabular-nums min-w-[2ch] text-center"
                 >
                   {clickCount}

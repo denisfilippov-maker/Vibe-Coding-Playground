@@ -123,7 +123,7 @@ export function VisualEffectsSection() {
                   textShadow: `0 0 20px ${color}, 0 0 40px ${color}, 0 0 80px ${color}`,
                   scale: 1.05,
                 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.3 }}
               >
                 {text}
               </motion.span>

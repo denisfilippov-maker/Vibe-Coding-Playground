@@ -19,7 +19,7 @@ export function AnimatedSlider({ className }: AnimatedSliderProps) {
       <div className="flex justify-between items-center">
         <span className="text-sm font-mono text-[var(--text-secondary)]">Значение</span>
         <span
-          className="text-2xl font-display font-bold tabular-nums transition-colors duration-200"
+          className="text-2xl font-display font-bold tabular-nums transition-colors duration-300"
           style={{ color: trackColor }}
         >
           {value}
@@ -36,7 +36,7 @@ export function AnimatedSlider({ className }: AnimatedSliderProps) {
       >
         <RadixSlider.Track className="relative grow rounded-full h-2 bg-[var(--border)]">
           <RadixSlider.Range
-            className="absolute rounded-full h-full transition-colors duration-200"
+            className="absolute rounded-full h-full transition-colors duration-300"
             style={{ backgroundColor: trackColor }}
           />
         </RadixSlider.Track>

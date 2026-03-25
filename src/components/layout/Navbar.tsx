@@ -69,7 +69,7 @@ export function Navbar() {
         {/* Logo — scroll to top */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-display font-bold text-sm tracking-wide text-[var(--text-primary)] hover:text-[var(--accent-cyan)] transition-colors duration-200"
+          className="font-display font-bold text-sm tracking-wide text-[var(--text-primary)] hover:text-[var(--accent-cyan)] transition-colors duration-300"
         >
           Vibe Coding
           <span className="text-[var(--accent-cyan)]"> Playground</span>
@@ -84,7 +84,7 @@ export function Navbar() {
                 href={`#${link.href}`}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
-                  'text-xs font-mono transition-colors duration-200',
+                  'text-xs font-mono transition-colors duration-300',
                   isActive
                     ? 'text-[var(--accent-cyan)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--accent-cyan)]'
@@ -104,7 +104,7 @@ export function Navbar() {
 
         <button
           onClick={toggleTheme}
-          className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200 text-sm font-mono"
+          className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-300 text-sm font-mono"
           aria-label="Toggle theme"
         >
           {theme === 'dark' ? '☀' : '☾'}

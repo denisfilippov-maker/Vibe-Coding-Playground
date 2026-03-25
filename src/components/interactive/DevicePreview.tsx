@@ -31,7 +31,7 @@ export function DevicePreview() {
             key={d}
             onClick={() => setDevice(d)}
             className={cn(
-              'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono transition-all duration-200',
+              'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono transition-all duration-300',
               device === d
                 ? 'bg-[var(--accent-cyan)] text-[var(--bg-base)] font-semibold'
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
