@@ -18,28 +18,28 @@ const COLOR_SHIFT_CARDS: {
 }[] = [
   {
     title: 'Cyan Card',
-    desc: 'Наведи для эффекта',
+    desc: 'Tap / Hover',
     accent: 'cyan',
     bg: 'rgba(0,245,255,0.08)',
     glow: '0 0 30px rgba(0,245,255,0.4)',
   },
   {
     title: 'Violet Card',
-    desc: 'Наведи для эффекта',
+    desc: 'Tap / Hover',
     accent: 'violet',
     bg: 'rgba(157,78,221,0.08)',
     glow: '0 0 30px rgba(157,78,221,0.4)',
   },
   {
     title: 'Green Card',
-    desc: 'Наведи для эффекта',
+    desc: 'Tap / Hover',
     accent: 'green',
     bg: 'rgba(57,255,20,0.08)',
     glow: '0 0 30px rgba(57,255,20,0.4)',
   },
   {
     title: 'Pink Card',
-    desc: 'Наведи для эффекта',
+    desc: 'Tap / Hover',
     accent: 'pink',
     bg: 'rgba(255,0,110,0.08)',
     glow: '0 0 30px rgba(255,0,110,0.4)',
@@ -123,6 +123,10 @@ export function VisualEffectsSection() {
                   textShadow: `0 0 20px ${color}, 0 0 40px ${color}, 0 0 80px ${color}`,
                   scale: 1.05,
                 }}
+                whileTap={{
+                  textShadow: `0 0 20px ${color}, 0 0 40px ${color}, 0 0 80px ${color}`,
+                  scale: 1.05,
+                }}
                 transition={{ duration: 0.3 }}
               >
                 {text}
@@ -201,26 +205,27 @@ export function VisualEffectsSection() {
 }
 
 function HoverColorCard({ card }: { card: typeof COLOR_SHIFT_CARDS[number] }) {
-  const [hovered, setHovered] = useState(false)
+  const [active, setActive] = useState(false)
 
   return (
     <motion.div
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
+      onHoverStart={() => setActive(true)}
+      onHoverEnd={() => setActive(false)}
+      onClick={() => setActive((v) => !v)}
       animate={{
-        backgroundColor: hovered ? card.bg : 'rgba(255,255,255,0.03)',
-        boxShadow: hovered ? card.glow : '0 0 0px transparent',
-        y: hovered ? -6 : 0,
-        borderColor: hovered
+        backgroundColor: active ? card.bg : 'rgba(255,255,255,0.03)',
+        boxShadow: active ? card.glow : '0 0 0px transparent',
+        y: active ? -6 : 0,
+        borderColor: active
           ? `var(--accent-${card.accent})`
           : 'rgba(255,255,255,0.08)',
       }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="rounded-2xl p-5 border cursor-default select-none"
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className="rounded-2xl p-5 border cursor-pointer select-none"
     >
       <motion.div
-        animate={{ color: hovered ? `var(--accent-${card.accent})` : 'var(--text-muted)' }}
-        transition={{ duration: 0.25 }}
+        animate={{ color: active ? `var(--accent-${card.accent})` : 'var(--text-muted)' }}
+        transition={{ duration: 0.3 }}
         className="text-2xl mb-3 font-bold font-mono"
       >
         {card.accent.toUpperCase().slice(0, 2)}
@@ -229,7 +234,7 @@ function HoverColorCard({ card }: { card: typeof COLOR_SHIFT_CARDS[number] }) {
         {card.title}
       </p>
       <p className="text-xs font-mono text-[var(--text-muted)] mt-1">
-        {hovered ? '← активен' : card.desc}
+        {active ? '✓ активен' : 'Tap / Hover'}
       </p>
     </motion.div>
   )

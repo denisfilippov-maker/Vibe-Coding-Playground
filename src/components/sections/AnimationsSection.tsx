@@ -165,8 +165,8 @@ export function AnimationsSection() {
   const controls = useAnimation()
   const isInView = useInView(containerRef, { amount: 0.1, once: false })
   const [hasAnimated, setHasAnimated] = useState(false)
+  const [replayKey, setReplayKey] = useState(0)
 
-  // Первый вход в viewport
   useEffect(() => {
     if (isInView && !hasAnimated) {
       controls.start('visible')
@@ -176,8 +176,8 @@ export function AnimationsSection() {
 
   const handleReplay = useCallback(async () => {
     await controls.start('hidden')
-    // Небольшая пауза чтобы hidden-состояние отрисовалось
     await new Promise((r) => setTimeout(r, 120))
+    setReplayKey((k) => k + 1)
     controls.start('visible')
   }, [controls])
 
@@ -204,6 +204,7 @@ export function AnimationsSection() {
         <div className="flex items-center gap-6">
           <div className="text-center">
             <AnimatedCounter
+              key={replayKey}
               to={100}
               className="font-display font-black text-4xl text-[var(--accent-cyan)]"
             />

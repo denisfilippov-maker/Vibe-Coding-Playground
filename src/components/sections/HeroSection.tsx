@@ -125,32 +125,49 @@ export function HeroSection() {
           ✦ Claude + Cursor · Vibe Coding
         </motion.div>
 
-        {/* Заголовок — буквы по одной (stagger + custom variant) */}
+        {/* Заголовок — буквы по одной (stagger + custom variant)
+            Слова обёрнуты в whitespace-nowrap, чтобы не разрывались середине */}
         <motion.h1
           className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-6"
           initial="hidden"
           animate="visible"
         >
-          {TITLE.split('').map((char, i) => (
-            <motion.span
-              key={i}
-              custom={i}
-              variants={titleVariants}
-              className={char === ' ' ? 'inline-block w-4 sm:w-6 lg:w-8' : 'inline-block'}
-              style={
-                i >= 5
-                  ? {
-                      background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-violet))',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }
-                  : undefined
-              }
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </motion.span>
-          ))}
+          {TITLE.split(' ').map((word, wordIdx) => {
+            const charOffset = TITLE.split(' ')
+              .slice(0, wordIdx)
+              .reduce((acc, w) => acc + w.length + 1, 0)
+
+            return (
+              <span key={wordIdx} className="inline-block whitespace-nowrap">
+                {word.split('').map((char, charIdx) => {
+                  const globalIdx = charOffset + charIdx
+                  return (
+                    <motion.span
+                      key={globalIdx}
+                      custom={globalIdx}
+                      variants={titleVariants}
+                      className="inline-block"
+                      style={
+                        globalIdx >= 5
+                          ? {
+                              background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-violet))',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent',
+                              backgroundClip: 'text',
+                            }
+                          : undefined
+                      }
+                    >
+                      {char}
+                    </motion.span>
+                  )
+                })}
+                {wordIdx < TITLE.split(' ').length - 1 && (
+                  <span className="inline-block w-3 sm:w-5 lg:w-7">&nbsp;</span>
+                )}
+              </span>
+            )
+          })}
         </motion.h1>
 
         {/* Подзаголовок с fade-in задержкой */}
