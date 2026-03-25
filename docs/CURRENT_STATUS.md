@@ -1,8 +1,8 @@
 # CURRENT_STATUS.md — Прогресс и задачи
 
-## Статус: 🟢 Production — активная разработка и полировка
+## Статус: 🏁 v1.0 — Production Ready
 
-**Дата последнего обновления:** 24 марта 2026  
+**Дата последнего обновления:** 25 марта 2026  
 **GitHub:** https://github.com/denisfilippov-maker/Vibe-Coding-Playground  
 **Dev-сервер:** `npm run dev` → http://localhost:3000  
 **Production:** https://filidan.ru (VDS 45.146.167.101)
@@ -101,7 +101,22 @@ git pull && npm run build && pm2 restart vibe-coding
 
 ---
 
-## Текущие задачи (следующие шаги)
+## Что сделано в v1.0
+
+### ✅ Мобильная полировка (iOS Safari)
+- [x] Заголовок Hero: `whitespace-nowrap` на каждое слово — больше нет разрыва "Pla/yground"
+- [x] Smooth scroll с `scroll-padding-top: 72px` и JS-обработчиком для точного офсета
+- [x] Navbar: активная секция подсвечивается через `IntersectionObserver`
+- [x] Все transitions: 200ms → 300ms для более плавного ощущения
+- [x] DevicePreview: `max-w-full` предотвращает переполнение 600px на 375px экране
+- [x] Neon Glow: добавлен `whileTap` — работает на тач-устройствах
+- [x] Hover Color Shift: `onClick` toggle вместо hover-only — работает на iOS
+- [x] AnimatedCounter: `replayKey` для сброса счётчика при нажатии Replay
+- [x] AnimatedCounter: `amount: 0` для надёжного срабатывания на iOS
+
+---
+
+## Возможные следующие шаги (backlog)
 
 1. **CI/CD** — GitHub Actions: автоматический деплой при push в `main`
 2. **Полировка Hero на mobile** — отключить parallax на `(hover: none)` устройствах
