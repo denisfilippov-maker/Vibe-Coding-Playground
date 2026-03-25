@@ -62,7 +62,7 @@ git pull && npm run build && pm2 restart vibe-coding
   - Spring (x: -60px + stiffness 300, damping 10 — bouncy)
   - SVG Path (pathLength 0→1)
 - [x] Кнопка "Replay" — `controls.start('hidden')` → 120ms → `controls.start('visible')`
-- [x] AnimatedCounter 0→60fps
+- [x] **AnimatedCounter 0→100** (по архитектуре: "счётчик 0→100 при входе в viewport")
 
 ### ✅ InteractivitySection (03)
 - [x] `ConfettiButton` — canvas-confetti с origin от позиции клика
@@ -70,13 +70,14 @@ git pull && npm run build && pm2 restart vibe-coding
 - [x] `AnimatedSlider` — Radix UI, цвет трека через HSL hue
 - [x] `ThemeToggle` — анимированный day/night переключатель
 - [x] `RippleButton` — кастомный Material-like ripple (AnimatePresence)
-- [x] Счётчик кликов
+- [x] **Анимированный счётчик кликов** — digit-flip через `AnimatePresence mode="popLayout"` (y: -20→0→20)
 
 ### ✅ VisualEffectsSection (04)
 - [x] Glassmorphism showcase — 4 карточки на gradient background
 - [x] Neon glow текст — textShadow усиливается при hover
 - [x] Aurora effect — анимированный градиент (Framer Motion background)
 - [x] Gradient mesh + SVG noise (feTurbulence + hue-rotate)
+- [x] **Hover Color Shift** — 4 карточки с плавной сменой акцентного цвета, glow и подъёмом при hover
 
 ### ✅ ResponsiveSection (05)
 - [x] Device switcher (Desktop / Tablet / Mobile)
@@ -84,9 +85,11 @@ git pull && npm run build && pm2 restart vibe-coding
 - [x] Breakpoint legend (default, sm, md, lg, xl)
 
 ### ✅ FooterSection (06)
-- [x] Watermark "VIBE" на фоне (opacity 0.03)
+- [x] **Watermark "Vibe Coding Playground"** (полное название, по архитектуре), `9vw`, opacity 0.04
 - [x] CTA блок с кнопками
+- [x] **GitHub — реальная ссылка** на репозиторий (target="_blank")
 - [x] "Создано с Claude + Cursor за 1 день"
+- [x] **Copyright © 2026**
 
 ### ✅ Инфраструктура и деплой
 - [x] GitHub: https://github.com/denisfilippov-maker/Vibe-Coding-Playground
@@ -104,7 +107,6 @@ git pull && npm run build && pm2 restart vibe-coding
 2. **Полировка Hero на mobile** — отключить parallax на `(hover: none)` устройствах
 3. **OG Image** — добавить `public/og-image.png` для превью в соцсетях
 4. **Оптимизация** — `LazyMotion` с `domAnimation` для уменьшения bundle
-5. **Доработка секций** — пройти по каждой секции по архитектуре, улучшить детали
 
 ---
 
