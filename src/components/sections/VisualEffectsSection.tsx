@@ -117,7 +117,7 @@ export function VisualEffectsSection() {
             {neonTexts.map(({ text, color }) => (
               <motion.span
                 key={text}
-                className="font-display font-black text-6xl sm:text-8xl cursor-default select-none"
+                className="font-display font-black text-5xl sm:text-8xl cursor-default select-none"
                 style={{ color }}
                 whileHover={{
                   textShadow: `0 0 20px ${color}, 0 0 40px ${color}, 0 0 80px ${color}`,

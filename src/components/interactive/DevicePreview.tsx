@@ -43,13 +43,13 @@ export function DevicePreview() {
         ))}
       </div>
 
-      {/* Preview frame */}
-      <div className="relative overflow-hidden">
+      {/* Preview frame — max-w-full prevents overflow on narrow screens */}
+      <div className="relative overflow-hidden w-full max-w-full">
         <motion.div
           animate={{ width: config.width }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           className="glass rounded-2xl overflow-hidden"
-          style={{ minHeight: 200 }}
+          style={{ minHeight: 200, maxWidth: '100%' }}
         >
           {/* Browser bar */}
           <div className="flex items-center gap-1.5 px-3 py-2 border-b border-[var(--border)]">
