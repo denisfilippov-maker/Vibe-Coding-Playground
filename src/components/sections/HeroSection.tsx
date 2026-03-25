@@ -127,7 +127,7 @@ export function HeroSection() {
 
         {/* Заголовок — буквы по одной (stagger + custom variant) */}
         <motion.h1
-          className="font-display font-black text-5xl sm:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tight mb-6"
+          className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-6"
           initial="hidden"
           animate="visible"
         >
@@ -185,46 +185,32 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
       >
-        <span className="text-xs font-mono text-[var(--text-muted)] tracking-widest uppercase">
+        <span className="text-xs font-mono text-[var(--text-secondary)] tracking-widest uppercase mb-1">
           Скролл
         </span>
 
-        {/* Пульсирующая стрелка вниз */}
         <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.6, 1, 0.6] }}
+          animate={{ y: [0, 10, 0], opacity: [1, 0.4, 1] }}
           transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--accent-cyan)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="var(--accent-cyan)" strokeWidth="2.5"
+            strokeLinecap="round" strokeLinejoin="round"
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </motion.div>
 
-        {/* Вторая стрелка с задержкой — эффект глубины */}
         <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
-          className="-mt-3"
+          animate={{ y: [0, 10, 0], opacity: [0.4, 0.1, 0.4] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut', delay: 0.25 }}
+          className="-mt-4"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--accent-cyan)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="var(--accent-cyan)" strokeWidth="2.5"
+            strokeLinecap="round" strokeLinejoin="round"
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
