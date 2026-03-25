@@ -13,6 +13,7 @@ const navLinks = [
   { href: 'interactivity', label: 'Интерактивность' },
   { href: 'visual-effects', label: 'Визуальные эффекты' },
   { href: 'responsive', label: 'Адаптивность' },
+  { href: 'contact', label: 'Заявка' },
 ]
 
 function scrollToSection(id: string) {
